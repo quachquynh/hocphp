@@ -119,4 +119,4 @@ add_action( 'widgets_init', 'mytheme_widgets_init' );
 # Bootstrap
 --------------------------------------------------------------*/
 
-<div class="col-xs-12 col-sm-12 col-md-6">
+<div class="col-xs-12 col-sm-6 col-md-3">
