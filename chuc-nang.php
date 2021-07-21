@@ -1,3 +1,5 @@
+
+// Tạo readmore
 function new_excerpt_length($length) {
 return 30;
 }
