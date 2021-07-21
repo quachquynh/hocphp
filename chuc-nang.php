@@ -68,7 +68,10 @@ textarea {
     border-radius: 5px;
 }
 
-// Đăng ký sidebar
+/*--------------------------------------------------------------
+# Đăng ký sidebar
+--------------------------------------------------------------*/
+
 function mytheme_widgets_init() {
 register_sidebar( array(
 'name' => esc_html__( 'Sidebar', 'mytheme' ),
