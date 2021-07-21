@@ -118,5 +118,9 @@ add_action( 'widgets_init', 'mytheme_widgets_init' );
 /*--------------------------------------------------------------
 # Bootstrap
 --------------------------------------------------------------*/
-
+.block-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 <div class="col-xs-12 col-sm-6 col-md-3">
