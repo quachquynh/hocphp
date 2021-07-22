@@ -130,3 +130,9 @@ wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/bootstrap/css
 wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ),'',true );
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
+
+
+/*--------------------------------------------------------------
+# CS CODESTAR FRAMEWORK
+--------------------------------------------------------------*/
+<?php echo cs_get_option('introduce-title-3'); ?>
