@@ -124,3 +124,9 @@ add_action( 'widgets_init', 'mytheme_widgets_init' );
   justify-content: space-between;
 }
 <div class="col-xs-12 col-sm-6 col-md-3">
+
+function my_scripts() {
+wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css');
+wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array( 'jquery' ),'',true );
+}
+add_action( 'wp_enqueue_scripts', 'my_scripts' );
