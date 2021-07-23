@@ -138,3 +138,19 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 <?php echo cs_get_option('introduce-title-3'); ?>
 
 https://tuongads.com/cf7-demo/
+
+/*--------------------------------------------------------------
+# Hiệu ứng phóng to ảnh khi rê chuột
+--------------------------------------------------------------*/
+
+.item-box img, .Latest_news img {
+  transition: transform .5s ease;
+  -webkit-transform:transform 5s ease out;
+  -moz-transform:transform 5s ease out;
+  -o-transform:transform 5s ease out;
+}
+.item-box img:hover, .Latest_news img:hover {
+  -webkit-transform:scale(1.1);
+  -moz-transform:scale(1.1); 
+  -o-transform:scale(1.1); 
+}
