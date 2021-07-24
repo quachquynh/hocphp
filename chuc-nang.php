@@ -154,3 +154,14 @@ https://tuongads.com/cf7-demo/
   -moz-transform:scale(1.1); 
   -o-transform:scale(1.1); 
 }
+
+/*--------------------------------------------------------------
+# Xóa bỏ swipebox
+--------------------------------------------------------------*/
+<script>
+$("body").click(function(){
+jQuery(document).ready(function(){
+   $("html").removeClass("#swipebox-overlay,.swipebox-html,.swipebox-no-touch");
+});
+});
+</script>
