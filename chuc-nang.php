@@ -1,3 +1,7 @@
+Code framework
+<div class="related-post">
+    <?php hrm_recent_post_category(); ?>
+  </div>
 
 // Tạo readmore
 function new_excerpt_length($length) {
@@ -165,3 +169,31 @@ jQuery(document).ready(function(){
 });
 });
 </script>
+
+/*--------------------------------------------------------------
+# Loop và WP_Query
+--------------------------------------------------------------*/
+<?php 
+          $cats = get_categories();
+          foreach ($cats as $cat) {
+            print_r($cat);
+          }
+
+        ?>
+
+  $loop = new WP_Query( array(
+    'post_type' => 'product',
+    'post_status' => 'publish',
+    'posts_per_page' => 5,
+    'tax_query' => array( array(
+        'taxonomy'         => 'product_cat',
+        'field'            => 'slug', // Or 'term_id' or 'name'
+        'terms'            => get_query_var( 'product_cat' ), // A slug term
+        // 'include_children' => false // or true (optional)
+    )),
+    'orderby' => 'rand'
+) );
+
+foreach ($loop as $cat) {
+            print_r($cat);
+          }
