@@ -2,7 +2,9 @@
 # CS CODESTAR FRAMEWORK
 --------------------------------------------------------------*/
 <?php echo cs_get_option('introduce-title-3'); ?>
-
+      
+<?php if (!cs_get_option('use_ptb')) {  smm_custom_breadcrumbs();} ?>
+      
 <div class="related-post">
     <?php hrm_recent_post_category(); ?>
   </div>
