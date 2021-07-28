@@ -2,7 +2,7 @@
 # CS CODESTAR FRAMEWORK
 --------------------------------------------------------------*/
 <?php echo cs_get_option('introduce-title-3'); ?>
-      
+Thêm thẻ P: <?php echo wpautop(cs_get_option('video_des')); ?>      
 <?php if (!cs_get_option('use_ptb')) {  smm_custom_breadcrumbs();} ?>
       
 <div class="related-post">
