@@ -198,3 +198,10 @@ jQuery(document).ready(function(){
 foreach ($loop as $cat) {
             print_r($cat);
           }
+
+/*--------------------------------------------------------------
+# KỸ THUẬT css
+--------------------------------------------------------------*/
+  .item-group .item:not(:nth-child(4)):not(:nth-child(8)) {
+    margin-right: 20px;
+  }
