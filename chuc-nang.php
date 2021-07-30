@@ -205,3 +205,17 @@ foreach ($loop as $cat) {
   .item-group .item:not(:nth-child(4)):not(:nth-child(8)) {
     margin-right: 20px;
   }
+
+
+/*--------------------------------------------------------------
+# Voyager
+--------------------------------------------------------------*/
+config/filesystem.php
+
+Upload file
+
+// Lastet post
+->orderBy('id', 'desc')
+
+//Đường dẫn image
+<img src="{{ asset('storage/photos/sec_category_1.jpg') }}">
