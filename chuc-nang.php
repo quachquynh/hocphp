@@ -20,9 +20,18 @@ return '...<a href="'. get_permalink() . '">' . ' Xem thêm' . '</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
+
+// Lấy Widget cũ
+add_filter('gutenberg_use_widgets_block_editor', '__return_false');
+add_filter('use_widgets_block_editor', '__return_false');
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
+
+define( 'WPCF7_AUTOP', false ); - wp-config.php
+add_filter('wpcf7_autop_or_not', '__return_false'); - function.php
+
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -219,3 +228,7 @@ Upload file
 
 //Đường dẫn image
 <img src="{{ asset('storage/photos/sec_category_1.jpg') }}">
+
+// Lấy Widget cũ
+add_filter('gutenberg_use_widgets_block_editor', '__return_false');
+add_filter('use_widgets_block_editor', '__return_false');
