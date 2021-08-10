@@ -1,3 +1,4 @@
+https://wordpress.org/plugins/string-locator/
 /*--------------------------------------------------------------
 # CS CODESTAR FRAMEWORK
 --------------------------------------------------------------*/
@@ -285,4 +286,35 @@ $(window).scroll(() => {
 }
 #custom_html-3.header-main.shrink {
        height: 60px;
+}
+
+
+/*****************************************
+*                  Meta bôx
+****************************************/
+add_filter( 'rwmb_meta_boxes', 'prefix_register_meta_boxes' );
+
+function prefix_register_meta_boxes( $meta_boxes ) {
+
+  $meta_boxes[] = [
+    'title'      => 'Thông tin',
+    'post_types' => 'du-an',
+    'fields' => array(
+
+      array(
+        'id'   => 'trang_thai',
+        'name' => __( 'Trạng thái', 'smw' ),
+        'type' => 'text',
+      ),
+
+      array(
+        'id'   => 'chu_dau_tu',
+        'name' => __( 'Chủ đầu tư', 'smw' ),
+        'type' => 'text',
+      ),
+    ),
+  ];
+
+
+  return $meta_boxes;
 }
