@@ -232,3 +232,57 @@ Upload file
 // Lấy Widget cũ
 add_filter('gutenberg_use_widgets_block_editor', '__return_false');
 add_filter('use_widgets_block_editor', '__return_false');
+
+// Tắt update
+function remove_core_updates(){
+global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
+}
+add_filter('pre_site_transient_update_core','remove_core_updates'); //hide updates for WordPress itself
+add_filter('pre_site_transient_update_plugins','remove_core_updates'); //hide updates for all plugins
+add_filter('pre_site_transient_update_themes','remove_core_updates'); //hide updates for all themes
+
+add_filter( 'auto_update_plugin', '__return_false' );
+
+add_filter( 'auto_update_theme', '__return_false' );
+
+
+/*****************************************
+* Fixed Sidebar 
+****************************************/
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+jQuery(window).scroll(function() {
+  if (jQuery(document).scrollTop() > 50) {
+    jQuery('#custom_html-3').addClass('shrink');
+  } else {
+    jQuery('#custom_html-3').removeClass('shrink');
+  }
+});
+$(window).scroll(() => {
+    const footerToTop = $('.footer-wrapper').position().top;
+    const scrollTop = $(document).scrollTop() + $(window).height();
+    const difference = scrollTop - footerToTop;
+    const bottomValue = scrollTop > footerToTop ? difference : 0;
+    $('#custom_html-3').css('bottom', bottomValue);
+}); 
+</script>
+
+#custom_html-3 {
+    padding: 15px 20px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 10px 0 rgb(0 0 0 / 5%);
+}
+.post-sidebar.large-3 {
+    padding-left: 0;
+}
+#custom_html-3 {
+   position: fixed;
+   max-width: 268px;
+   background: #fff;
+   z-index: 999;
+   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 15%);
+}
+#custom_html-3.header-main.shrink {
+       height: 60px;
+}
