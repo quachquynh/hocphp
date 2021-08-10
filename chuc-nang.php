@@ -318,3 +318,90 @@ function prefix_register_meta_boxes( $meta_boxes ) {
 
   return $meta_boxes;
 }
+
+
+/*****************************************
+*                  Liên quan custom post type
+****************************************/
+<div class='clearfix'></div>
+<h3>Dự án liên quan</h3>
+<div id="related_posts" class="single_related">
+<?php
+  //Get array of terms
+$terms = get_the_terms( $post->ID , 'tax-du-an', 'string');
+//Pluck out the IDs to get an array of IDS
+$term_ids = wp_list_pluck($terms,'term_id');
+
+//Query posts with tax_query. Choose in 'IN' if want to query posts with any of the terms
+//Chose 'AND' if you want to query for posts with all terms
+  $second_query = new WP_Query( array(
+      'post_type' => 'du-an',
+      'tax_query' => array(
+                    array(
+                        'taxonomy' => 'tax-du-an',
+                        'field' => 'id',
+                        'terms' => $term_ids,
+                        'operator'=> 'IN' //Or 'AND' or 'NOT IN'
+                     )),
+      'posts_per_page' => 3,
+      'ignore_sticky_posts' => 1,
+      'orderby' => 'rand',
+      'post__not_in'=>array($post->ID)
+   ) );
+
+//Loop through posts and display...
+    if($second_query->have_posts()) {
+     while ($second_query->have_posts() ) : $second_query->the_post(); ?>
+      
+        <ul>
+            <li class="col large-4">
+                <div class="relatedthumb">
+                <?php if (has_post_thumbnail()) { ?>
+
+                <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"> <?php the_post_thumbnail( 'related_sm', array('alt' => get_the_title()) ); ?> </a>
+                </div>
+                <?php } else { ?>
+                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                <?php } ?>
+                <h4>
+                  <a href="'. get_the_permalink().'"><?php echo get_the_title()?></a>
+                </h4>
+            </li>
+        </ul>
+       
+   <?php endwhile; wp_reset_query();
+   }?>
+   </div>
+   <div class='clearfix'></div>
+
+
+   #related_posts .col {
+  float: left;
+  margin-left: 0;
+  list-style: none;
+}
+.relatedcontent h3 {
+  font-size: 16px;
+  margin-top: 7px;
+}
+.relatedthumb img {
+  height: 100%;
+  max-height: 165px;
+}
+#related_posts {
+  border-top: 4px double #e8e8e8;
+        padding-top: 10px;
+}
+#related_posts li:nth-child(1) {
+  padding-left: 0 !important;
+}
+#related_posts li:nth-child(2) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+#related_posts li:nth-child(3) {
+  padding-right: 0 !important;
+}
+.relatedthumb img {
+  min-height: 125px;
+}
