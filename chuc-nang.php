@@ -88,6 +88,13 @@ textarea {
     border-radius: 5px;
 }
 
+// Xóa bỏ icon load
+
+<script type='text/javascript'>
+    document.addEventListener( 'wpcf7submit', function( event ) {
+        jQuery('.wpcf7 .processing').removeClass('processing');
+    }, false );
+</script>
 /*--------------------------------------------------------------
 # Đăng ký sidebar
 --------------------------------------------------------------*/
@@ -405,3 +412,64 @@ $term_ids = wp_list_pluck($terms,'term_id');
 .relatedthumb img {
   min-height: 125px;
 }
+
+// Bật builder Flatsome
+add_action( 'init', function () {
+  if ( function_exists( 'add_ux_builder_post_type' ) ) {
+    add_ux_builder_post_type( 'custom_post_type' );
+  }
+} );
+
+// TAXONOMY FLATSOME
+
+//archive-2-col.php (template-parts/posts/archive-2-col.php)
+
+<?php if( is_tax('tax-du-an')) : ?>
+  <?php get_template_part( 'template-parts/posts/archive-taxonomy');?>
+<?php endif ; ?>
+
+
+/*****************************************
+*       THÊM WIDGET BẰNG JQUERY          *
+*****************************************/
+<script type="text/javascript">
+  
+jQuery(document).ready(function(){
+  jQuery('.product-info .cart').after('<?php dynamic_sidebar("widget-hotline"); ?>');
+  jQuery('.price-wrapper').after('<?php dynamic_sidebar("thongtinnoibat"); ?>');
+});
+</script>
+
+/*****************************************
+*       Scollbar          *
+*****************************************/
+#secondary::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+#secondary::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+#secondary::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  background-color: #d6dee1;
+}
+#secondary.shrink {
+       height: auto;
+}
+#secondary::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+/*****************************************
+*       THÊM LINK BẰNG JQUERY          *
+*****************************************/
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  $("div.header-slogan").click(function() {
+    window.location = "http://minhcuong.dn-media.net/";
+  });
+});
+
+</script>
