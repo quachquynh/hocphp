@@ -706,3 +706,18 @@ echo the_title();
 endwhile;
 endif;
 wp_reset_query(); ?>
+
+// Get taxonomy
+$cat_terms = get_terms(
+array('danh-muc-cpt'),
+array(
+    'hide_empty'    => false,
+    //'orderby'       => 'name',
+    'order'         => 'ASC',
+    'number'        => 6 //specify yours
+     )
+);
+foreach ($cat_terms as $term) {
+  echo $term->name;
+} 
+?>
