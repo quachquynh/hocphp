@@ -27,7 +27,7 @@ add_filter('gutenberg_use_widgets_block_editor', '__return_false');
 add_filter('use_widgets_block_editor', '__return_false');
 
 /*--------------------------------------------------------------
-# Forms
+# WP Forms
 --------------------------------------------------------------*/
 
 define( 'WPCF7_AUTOP', false ); - wp-config.php
@@ -86,6 +86,14 @@ textarea {
     height: 40px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+// Placeholder
+.wpcf7-form input::-webkit-input-placeholder,
+.wpcf7-form textarea::-webkit-input-placeholder
+{
+  color: #555;
+  font-weight: 400;
 }
 
 // Xóa bỏ icon load
@@ -473,3 +481,228 @@ jQuery(document).ready(function() {
 });
 
 </script>
+
+/*****************************************
+*       POPUP Maker Border          *
+*****************************************/
+.pum-theme-64 .pum-content, .pum-theme-enterprise-blue .pum-content
+{
+  border: 0!important;
+  outline: 0!important;
+}
+
+// SHORT CODE BREADCRUMB
+/*****************************************
+*       POPUP Maker Border          *
+*****************************************/
+function breadcrumbs() {
+
+  // Code
+  if(!is_home()) {
+    echo '<nav class="breadcrumb">';
+    echo '<a href="'.home_url('/').'">'.get_bloginfo('name').'</a><span class="divider">/ </span>';
+    if (is_category() || is_single()) {
+      the_category(' <span class="divider">/ </span> ');
+      if (is_single()) {
+        echo ' <span class="divider">/ </span> ';
+        the_title();
+      }
+    } elseif (is_page()) {
+      echo the_title();
+    }
+    echo '</nav>';
+  }
+}
+add_shortcode( 'breadcrumbs', 'breadcrumbs' );
+
+// Contact - Liên hệ
+<div class="contact-list">
+  <div class="hide-show">
+    
+  <button class="btnContact">
+  <a title="Trang chủ" href="https://nhasachbaoan.com/"><img src="/wp-content/uploads/2021/08/icon-home.png" alt="Hotline">
+  </a><span>Trang chủ </span>
+  </button>
+  <button class="btnContact btn-zalo">
+  <a title="Chat zalo" href="https://zalo.me/0949813381" target="_blank" rel="nofollow"><img src="/wp-content/uploads/2021/08/zalo.png" alt="Zalo chat">
+  </a>
+  <span>Chat zalo</span>
+  </button>
+  <button class="btnContact btn-zalo">
+  <a title="Hotline" href="tel:0949813381" target="_blank" rel="nofollow"><img src="/wp-content/uploads/2021/08/icon-call.png" alt="Hotline">
+    </a><span>Gọi điện</span>
+  </button>
+  <button class="btnContact btn-hotline popmake-290">
+  <a title="Đặt lịch" href="tel:012345678" rel="nofollow"><img src="/wp-content/uploads/2021/08/icon-contact.png" alt="Đặt lịch">
+    </a><span>Đặt lịch</span>
+  </button>
+  <button class="btnContact btn-fb">
+  <a title="Messenger" href="https://www.facebook.com/vesinhcongnghiepuytingiarehanoi/" target="_blank" rel="nofollow"><img src="/wp-content/uploads/2021/08/messenger-2.png" alt="Massenger"></a><span>Messenger</span>
+  </button>
+  </div>
+  
+<button class="btnContact HideShow">
+
+</button>
+  
+</div>
+
+/* CSS Contact */
+.contact-list {
+    position: fixed;
+    bottom: 20px;
+    left: 0px;
+    z-index: 99999;
+    background: #fff;
+    padding-top: 6px;
+  border-radius: 4px;
+  padding-bottom: 6px;
+  border: 1px solid #f6f6f6;
+  box-shadow: 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 3px 1px -2px rgb(0 0 0 / 12%), 0px 1px 5px 0px rgb(0 0 0 / 20%);
+  margin-left: 10px;
+}
+.contact-list .add-class {
+  background: transparent!important;
+}
+    .quote1{font-family:Verdana;padding:10px;
+       background:#44c767;color:#fff;}
+     
+    .quote2{
+    padding:10px;
+       background: transparent;
+    color:#fff;
+    border:0;
+    box-shadow:none;
+    
+}
+.quote2 .btnContact {
+    display: block;
+    line-height: 42px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    width: 58px;
+    height: 58px;
+  background: url(https://nhasachbaoan.com/wp-content/uploads/2021/08/icon-cta.png) no-repeat;
+}
+.HideShow {
+  display: block;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    background-color: #bc484c;
+}
+.HideShow:before {
+  content: "\f00d";
+  width: 42px;
+  height: 42px;
+  font-family: 'Font Awesome\ 5 Free';
+  font-weight: 900;
+}
+.quote2 .HideShow:before {
+  content: "";
+}
+.btnContact {
+  border-radius: 20px;
+  padding: 0 5px;
+  display: block;
+  margin-bottom: 6px;
+  margin-right: 0;
+  margin: 0 auto;
+}
+.btnContact span {
+  display: block;
+  font-size: 11px;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 19px;
+}
+.btn-zalo a, .btn-fb a, .btn-hotline a {
+font-size: 15px;
+color: white;
+font-weight: 400;
+text-transform: none;
+line-height: 0;
+margin-bottom: 0;
+}
+.contact-list img {
+  width: 40px;
+}
+.contact-list .btn_hide_cta {
+  background-color: #e55a5d;
+  background: url(http://localhost/nhasachvietnam/wp-content/uploads/2021/08/icon-cta.png);
+    background-size: cover;
+}
+
+/* Jquery */
+jQuery(document).ready(function(){
+  jQuery(".HideShow").click(function(){
+    jQuery(".hide-show").toggle(1000);
+    jQuery(".contact-list").toggleClass("quote1 quote2");  
+  });
+
+});
+
+/* Fixed Sidebar -Siderbar trượt khi cuộn chuột
+<?php if( is_single() ) : ?>
+<script>
+jQuery(document).ready(function(){
+jQuery(window).scroll(function () {   
+   
+  if (jQuery(window).width() > 1024) {
+  if(jQuery(window).scrollTop() > 550) {
+   
+    jQuery('#text-2').css('position','fixed');
+    jQuery('#text-2').css('top','10px'); 
+   
+  }
+
+ else if (jQuery(window).scrollTop() <= 550) {
+    jQuery('#text-2').css('position','');
+    jQuery('#text-2').css('top','');
+ }  
+    if (jQuery('#text-2').offset().top + jQuery("#text-2").height() > jQuery(".news-post").offset().top) {
+        jQuery('#text-2').css('top',-(jQuery("#text-2").offset().top + jQuery("#text-2").height() - jQuery(".news-post").offset().top));
+    }}
+});
+});
+  
+</script>
+<?php endif ; ?>
+
+
+// WP_Query metabox
+<?php
+
+$args = array(
+  'post_type' => 'custom-posts',
+  'order' => 'ASC',
+  'orderby' => 'ID', // Sắp xếp bài viết theo thứ tự ID
+    'meta_query' => array(
+        array(
+            'key' => 'id_bai_viet',
+            'value' => '100',
+            'compare' => '<',
+            'type' => 'NUMERIC',
+        ),
+    ),
+);
+$query_posts = new WP_Query( $args );
+
+if( $query_posts->have_posts() ):
+while( $query_posts->have_posts() ) : $query_posts->the_post();
+
+echo the_title();
+
+endwhile;
+endif;
+wp_reset_query(); ?>
