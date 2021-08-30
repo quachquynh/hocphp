@@ -707,7 +707,14 @@ endwhile;
 endif;
 wp_reset_query(); ?>
 
-// Get taxonomy
+/*************************
+//        Get taxonomy    /
+/*************************/
+$categories = get_terms( 'danh-muc-cpt' );
+var_dump($categories);
+
+// Get
+
 $cat_terms = get_terms(
 array('danh-muc-cpt'),
 array(
@@ -721,3 +728,38 @@ foreach ($cat_terms as $term) {
   echo $term->name;
 } 
 ?>
+
+// Get the taxonomy's terms
+$terms = get_terms(
+    array(
+        'taxonomy'   => 'danh-muc-cpt',
+        'hide_empty' => false,
+    )
+);
+
+// Check if any term exists
+if ( ! empty( $terms ) && is_array( $terms ) ) {
+    // add links for each category
+    foreach ( $terms as $term ) { ?>
+        <a class="btn  btn-default" href="<?php echo esc_url( get_term_link( $term ) ) ?>">
+            <?php echo $term->name; ?>
+        </a><?php
+    }
+}
+
+// WP_Query all post taxonomy
+// get all terms in the taxonomy
+$terms = get_terms( 'danh-muc-cpt' ); 
+// convert array of term objects to array of term IDs
+$term_ids = wp_list_pluck( $terms, 'term_id' );
+
+// proceed with tax query
+$args = array ('tax_query' => array(
+    array(
+        'taxonomy' => 'danh-muc-cpt',
+        'field' => 'term_id',
+        'terms' => $term_ids,
+         )
+)
+);
+https://clients.r1software.com/knowledgebase/27/Taxonomy-Query-tax_query-using-WP_Query-example.html
