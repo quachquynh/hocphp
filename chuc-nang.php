@@ -763,3 +763,14 @@ $args = array ('tax_query' => array(
 )
 );
 https://clients.r1software.com/knowledgebase/27/Taxonomy-Query-tax_query-using-WP_Query-example.html
+      
+      
+// Z codestar
+<?php $item_system = cs_get_option('item_system'); ?>
+<?php foreach ($item_system as $item) { ?>
+      
+<?php $img_ar_full = wp_get_attachment_image_src( $item['system_image'] );
+$img_link_full = $img_ar_full[0]; ?>
+<img src="<?php echo $img_link_full ?>" alt="<?php $img['system_image'] ?>">
+<h6 class="system-title"><?php echo $item['system_title'];?></h6>
+<p><?php echo $item['system_des'];?></p>
