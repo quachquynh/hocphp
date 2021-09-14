@@ -774,3 +774,35 @@ $img_link_full = $img_ar_full[0]; ?>
 <img src="<?php echo $img_link_full ?>" alt="<?php $img['system_image'] ?>">
 <h6 class="system-title"><?php echo $item['system_title'];?></h6>
 <p><?php echo $item['system_des'];?></p>
+
+ // GET ALL TAXONOMY
+ echo '</ul>';
+
+					$taxonomyName = "danh-muc-tour";
+ 
+					$parent_terms = get_terms( $taxonomyName, array( 'parent' => 0, 'orderby' => 'slug', 'hide_empty' => false ) );  
+
+					echo '<ul>';
+					foreach ( $parent_terms as $pterm ) {
+					    //Get the Child terms
+					    $terms = get_terms( $taxonomyName, array( 'parent' => $pterm->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+					    foreach ( $terms as $term ) {
+					        echo '<li class="col-md-2"><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';   
+					    }
+					
+					echo '</ul>';
+
+// GET DANH MỤC CON
+			    <?php 
+
+			    	$term_id = 182;
+					$taxonomy_name = 'danh-muc-tour';
+					$termchildren = get_term_children( $term_id, $taxonomy_name );
+					
+					echo '<ul>';
+					foreach ( $termchildren as $child ) {
+					    $term = get_term_by( 'id', $child, $taxonomy_name );
+    echo '<li class="col-md-2"><a href="' . get_term_link( $child, $taxonomy_name ) . '">' . $term->name . '</a></li>';
+					}
+					
+					?>
