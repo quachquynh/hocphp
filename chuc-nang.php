@@ -806,3 +806,164 @@ $img_link_full = $img_ar_full[0]; ?>
 					}
 					
 					?>
+
+// Slider
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- SLider -->
+	<?php $items = rwmb_meta('prefix_album'); ?>
+
+	<div class="album-single">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="true" data-interval="6000">
+	  <!-- The slideshow -->
+	<div class="carousel-inner">
+		
+    <?php 
+		$dem = 0;
+		foreach ( $items as $image ) { 
+		$dem++;
+		?>
+		<?php if($dem == 1) { ?>
+		  <div class="large-image carousel-item active">
+			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
+		  </div>
+		<?php } ?>
+			<div class="large-image carousel-item">
+			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
+		  </div> 
+		
+	<?php } ?>
+</div>
+
+  <!-- Left and right controls -->
+	<?php if($items) { ?>
+	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+	<span class="glyphicon glyphicon-chevron-left"><i class="fas fa-chevron-circle-left"></i></span>
+	<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+	<span class="glyphicon glyphicon-chevron-right"><i class="fas fa-chevron-circle-right"></i></span>
+	<span class="sr-only">Next</span>
+	</a>
+	<?php } ?>
+
+<!-- Indicators -->
+<ul class="carousel-indicators">
+	<?php 
+	$i = 0;
+	foreach ( $items as $image ) { 
+	$i++;
+	?>
+	<?php if($i == 1) { ?>
+		<li data-target="#myCarousel" data-slide-to="<?php echo $i;?>" class="active"><img src="<?php echo $image['url'];?>"></li>
+	<?php } ?>
+		<li data-target="#myCarousel" data-slide-to="<?php echo $i;?>"><img src="<?php echo $image['url'];?>"></li>
+	<?php } ?>
+</ul>	
+		</div></div>
+<!-- End Slider -->
+
+// MÃ CSS
+/*************************
+ *       SLIDE GALLERY   *
+ * **********************/
+ul.album-single {
+	list-style-type: none;
+	margin-left: 0;
+}
+.album-single li {
+	width: 10%;
+	display: inline-block;
+	margin-right: 10px;
+}
+.album-single li img {
+	width: 100px;
+}
+.album-single .large-image img {
+	margin-bottom: 110px;
+	object-fit: cover;
+}
+.glyphicon-chevron-right:before,
+.glyphicon-chevron-left:before
+{
+	display: none;
+}
+.fa-chevron-circle-right,
+.fa-chevron-circle-left
+{
+	font-size: 45px;
+}
+.carousel{
+position: relative;
+}
+.carousel-indicators{
+	position: relative;
+}
+.carousel-indicators li{
+	text-indent:0;
+	display:inherit;
+	float:left;
+	width: 135px!important;
+	height: 100px;
+	opacity: 1 !important;
+	border: 0 !important;
+	margin-left: 0;
+	margin: 0 !important;
+}
+.carousel-indicators li.active {
+	margin: 0 !important;
+}
+
+.carousel-indicators li img{
+width: 100%;
+height: 100px;
+border: 0;
+padding: 0;
+}
+.carousel-indicators .active img{
+	border: 0;
+}
+.carousel-indicators .active{
+margin:0;
+	margin-right: 3px;
+width: 100px;
+height: 100px;
+}
+.carousel-control.right,
+.carousel-control.left{
+background-image: none;
+}
+@media screen and (min-width:320px) and (max-width:360px) {
+.carousel-indicators{
+top:115px;
+left:95px;
+}
+.carousel-indicators li img{
+width:95%;
+height:50px;
+}
+.carousel-indicators li{
+	width:100px;
+	height:50px;
+	overflow: auto !important;
+	margin: 0 !important;
+	
+}
+.carousel-indicators .active{
+width:20%;
+height:50px;
+}
+}
+@media screen and (min-width:768px) and (max-width:980px){
+.carousel-indicators{
+top:240px;
+left:213px;
+}
+}
+/*********************
+ *       End Slider  *
+ * ******************/
