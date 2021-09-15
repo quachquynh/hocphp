@@ -872,97 +872,115 @@ $img_link_full = $img_ar_full[0]; ?>
  *       SLIDE GALLERY   *
  * **********************/
 ul.album-single {
-	list-style-type: none;
-	margin-left: 0;
+  list-style-type: none;
+  margin-left: 0;
 }
 .album-single li {
-	width: 10%;
-	display: inline-block;
-	margin-right: 10px;
+  width: 10%;
+  display: inline-block;
+  margin-right: 10px;
 }
 .album-single li img {
-	width: 100px;
+  width: 100px;
 }
 .album-single .large-image img {
-	margin-bottom: 110px;
-	object-fit: cover;
+  margin-bottom: 126px;
+  object-fit: cover;
 }
 .glyphicon-chevron-right:before,
 .glyphicon-chevron-left:before
 {
-	display: none;
+  display: none;
 }
 .fa-chevron-circle-right,
 .fa-chevron-circle-left
 {
-	font-size: 45px;
+  font-size: 45px;
 }
 .carousel{
 position: relative;
 }
 .carousel-indicators{
-	position: relative;
+  position: relative;
 }
-.carousel-indicators li{
-	text-indent:0;
-	display:inherit;
-	float:left;
-	width: 135px!important;
-	height: 100px;
-	opacity: 1 !important;
-	border: 0 !important;
-	margin-left: 0;
-	margin: 0 !important;
+.carousel-indicators li:not(:last-child) {
+  margin-right: 10px!important;
 }
+.carousel-indicators li {
+  text-indent:0;
+  display: -webkit-box !important;
+  float:left;
+  width: 135px!important;
+  height: 112px !important;
+  opacity: 1 !important;
+  border: 0 !important;
+  margin: 0 10px 0 0 !important;
+  background: transparent !important;
+  border-radius: 0;
+  }
 .carousel-indicators li.active {
-	margin: 0 !important;
+  margin: 0;
 }
 
 .carousel-indicators li img{
-width: 100%;
-height: 100px;
-border: 0;
-padding: 0;
+  width: 100%;
+  height: 100px;
+  border: 0;
+  padding: 0;
+  opacity: 0.6;
 }
 .carousel-indicators .active img{
-	border: 0;
+  border: 0;
+  opacity: 1;
 }
 .carousel-indicators .active{
 margin:0;
-	margin-right: 3px;
+  margin-right: 3px;
 width: 100px;
 height: 100px;
+  background: transparent !important;
 }
 .carousel-control.right,
 .carousel-control.left{
 background-image: none;
 }
 @media screen and (min-width:320px) and (max-width:360px) {
-.carousel-indicators{
-top:115px;
-left:95px;
-}
-.carousel-indicators li img{
-width:95%;
-height:50px;
-}
-.carousel-indicators li{
-	width:100px;
-	height:50px;
-	overflow: auto !important;
-	margin: 0 !important;
-	
-}
-.carousel-indicators .active{
-width:20%;
-height:50px;
-}
-}
+  .carousel-indicators{
+  top:115px;
+  left:95px;
+  }
+  .carousel-indicators li img{
+  width:95%;
+  height:50px;
+  }
+  .carousel-indicators li{
+    width:100px;
+    height:50px;
+    margin: 0 !important;
+    
+  }
+  .carousel-indicators .active{
+  width:20%;
+  height:50px;
+  }
+  }
 @media screen and (min-width:768px) and (max-width:980px){
-.carousel-indicators{
-top:240px;
-left:213px;
+  .carousel-indicators{
+  top:240px;
+  left:213px;
+  }
 }
+  
+body .carousel-indicators {
+    bottom: 0;
+    margin: 0 !important;
+    width: 100%;
+    justify-content: flex-start;
+    height: 114px;
+}
+.carousel-indicators li img {
+    width: 100%;
+    height: 100px;
 }
 /*********************
  *       End Slider  *
