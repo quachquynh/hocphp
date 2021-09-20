@@ -893,3 +893,12 @@ $img_link_full = $img_ar_full[0]; ?>
         </div>
 
     </div>
+
+// Jquery click display image
+jQuery(function(){
+    jQuery('.gallery-slides .item img').click(function(){
+        var thumbImage = jQuery(this).attr('src');
+		var oldSrc =  jQuery('img#toggleImage').attr("src");
+        jQuery('img#toggleImage').attr('src', thumbImage);
+    });
+});
