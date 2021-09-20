@@ -1071,3 +1071,12 @@ Carousel next click
 <!-- #Carousel Navigation -->
 </div> <!-- /row -->
 </div> <!-- /container -->
+
+// Thay ảnh khi click
+jQuery(function(){
+    jQuery('#carousel-thumbs img').click(function(){
+        var thumbImage = jQuery(this).attr('src');
+		var oldSrc =  jQuery('img#toggleImage').attr("src");
+        jQuery('img[src="' + oldSrc + '"]').attr('src', thumbImage);
+    });
+});
