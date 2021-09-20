@@ -816,201 +816,26 @@ $img_link_full = $img_ar_full[0]; ?>
 
 <!-- SLider -->
 	<?php $items = rwmb_meta('prefix_album'); ?>
-
-	<div class="album-single">
-	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="true" data-interval="6000">
-	  <!-- The slideshow -->
-	<div class="carousel-inner">
-		
-    <?php 
-		$dem = 0;
-		foreach ( $items as $image ) { 
-		$dem++;
-		?>
-		<?php if($dem == 1) { ?>
-		  <div class="large-image carousel-item active">
-			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
-		  </div>
-		<?php } ?>
-			<div class="large-image carousel-item">
-			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
-		  </div> 
-		
-	<?php } ?>
-</div>
-
-  <!-- Left and right controls -->
-	<?php if($items) { ?>
-	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-	<span class="glyphicon glyphicon-chevron-left"><i class="fas fa-chevron-circle-left"></i></span>
-	<span class="sr-only">Previous</span>
-	</a>
-	<a class="right carousel-control" href="#myCarousel" data-slide="next">
-	<span class="glyphicon glyphicon-chevron-right"><i class="fas fa-chevron-circle-right"></i></span>
-	<span class="sr-only">Next</span>
-	</a>
-	<?php } ?>
-
-<!-- Indicators -->
-<ul class="carousel-indicators">
-	<?php 
-	$i = 0;
-	foreach ( $items as $image ) { 
-	$i++;
-	?>
-	<?php if($i == 1) { ?>
-		<li data-target="#myCarousel" data-slide-to="<?php echo $i;?>" class="active"><img src="<?php echo $image['url'];?>"></li>
-	<?php } ?>
-		<li data-target="#myCarousel" data-slide-to="<?php echo $i;?>"><img src="<?php echo $image['url'];?>"></li>
-	<?php } ?>
-</ul>	
-		</div></div>
-<!-- End Slider -->
-
-// MÃ CSS
-/*************************
- *       SLIDE GALLERY   *
- * **********************/
-ul.album-single {
-  list-style-type: none;
-  margin-left: 0;
-}
-.album-single li {
-  width: 10%;
-  display: inline-block;
-  margin-right: 10px;
-}
-.album-single li img {
-  width: 100px;
-}
-.album-single .large-image img {
-  margin-bottom: 126px;
-  object-fit: cover;
-}
-.glyphicon-chevron-right:before,
-.glyphicon-chevron-left:before
-{
-  display: none;
-}
-.fa-chevron-circle-right,
-.fa-chevron-circle-left
-{
-  font-size: 45px;
-}
-.carousel{
-position: relative;
-}
-.carousel-indicators{
-  position: relative;
-}
-.carousel-indicators li:not(:last-child) {
-  margin-right: 10px!important;
-}
-.carousel-indicators li {
-  text-indent:0;
-  display: -webkit-box !important;
-  float:left;
-  width: 135px!important;
-  height: 112px !important;
-  opacity: 1 !important;
-  border: 0 !important;
-  margin: 0 10px 0 0 !important;
-  background: transparent !important;
-  border-radius: 0;
-  }
-.carousel-indicators li.active {
-  margin: 0;
-}
-
-.carousel-indicators li img{
-  width: 100%;
-  height: 100px;
-  border: 0;
-  padding: 0;
-  opacity: 0.6;
-}
-.carousel-indicators .active img{
-  border: 0;
-  opacity: 1;
-}
-.carousel-indicators .active{
-margin:0;
-  margin-right: 3px;
-width: 100px;
-height: 100px;
-  background: transparent !important;
-}
-.carousel-control.right,
-.carousel-control.left{
-background-image: none;
-}
-@media screen and (min-width:320px) and (max-width:360px) {
-  .carousel-indicators{
-  top:115px;
-  left:95px;
-  }
-  .carousel-indicators li img{
-  width:95%;
-  height:50px;
-  }
-  .carousel-indicators li{
-    width:100px;
-    height:50px;
-    margin: 0 !important;
-    
-  }
-  .carousel-indicators .active{
-  width:20%;
-  height:50px;
-  }
-  }
-@media screen and (min-width:768px) and (max-width:980px){
-  .carousel-indicators{
-  top:240px;
-  left:213px;
-  }
-}
-  
-body .carousel-indicators {
-    bottom: 0;
-    margin: 0 !important;
-    width: 100%;
-    justify-content: flex-start;
-    height: 114px;
-}
-.carousel-indicators li img {
-    width: 100%;
-    height: 100px;
-}
-/*********************
- *       End Slider  *
- * ******************/
-
-Carousel next click
-<!-- SLider -->
-	<?php $items = rwmb_meta('prefix_album'); ?>
 				
-<div class="container mt-5">
+<div class="container">
 <div class="carousel-container row">
   
 <!-- Sorry! Lightbox doesn't work - yet. -->
   
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide"  data-ride="carousel" data-interval="true" data-interval="3000">
 	<!-- Large image -->
+	
   <div class="carousel-inner">
-	<?php 
+		<?php 
 		$dem = 0;
 		foreach ( $items as $image ) { 
 		$dem++;
 		?>
-		<?php if($dem == 1) { ?>
-		  <div class="large-image carousel-item active">
+		<?php if($dem == 1) : ?>
+		  <div class="large-image carousel-item active" data-slide-number="<?php echo $dem;?>">
 			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
 		  </div>
-		<?php } ?>
-			<div class="large-image carousel-item">
-			<img id="toggleImage" src="<?php echo $image['url'];?>" style="width:100%">
-		  </div> 
+		<?php endif;?>
 		
 	<?php } ?>
 
@@ -1021,43 +846,23 @@ Carousel next click
 <!-- Carousel Navigation -->
 <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
 	
-  <div class="carousel-inner">
-	  
+  <!--<div class="carousel-inner">-->
+		
     <div class="carousel-item active">
       <div class="row mx-0">
 		<?php 
 		$i = 0;
 		foreach ( $items as $image ) { 
 		$i++;
-		if ($i == 7) { 
-			break; 
-		} ?>
-        <div id="carousel-selector-<?php echo $i;?>" class="thumb col-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="0">
-			 <img src="<?php echo $image['url'];?>" class="img-fluid" alt="...">
-		</div>
+		  ?>
+			<div id="carousel-selector-<?php echo $i;?>" class="thumb col-2 px-1 py-2 selected thumb-img" data-target="#myCarousel" data-slide-to="<?php echo $i;?>"><img src="<?php echo $image['url'];?>" class="img-fluid" alt="..."></div>
+        
 		<?php } ?>
+		  
       </div>
     </div>
-    <div class="carousel-item">
-		
-      <div class="row mx-0">
-        <div id="carousel-selector-6" class="thumb col-2 px-1 py-2" data-target="#myCarousel" data-slide-to="6">
-          <img src="https://source.unsplash.com/uanoYn1AmPs/600x400/" class="img-fluid" alt="...">
-        </div>
-        <div id="carousel-selector-7" class="thumb col-2 px-1 py-2" data-target="#myCarousel" data-slide-to="7">
-          <img src="https://source.unsplash.com/_snqARKTgoc/600x400/" class="img-fluid" alt="...">
-        </div>
-        <div id="carousel-selector-8" class="thumb col-2 px-1 py-2" data-target="#myCarousel" data-slide-to="8">
-          <img src="https://source.unsplash.com/M9F8VR0jEPM/600x400/" class="img-fluid" alt="...">
-        </div>
-        <div id="carousel-selector-9" class="thumb col-2 px-1 py-2" data-target="#myCarousel" data-slide-to="9">
-          <img src="https://source.unsplash.com/Q1p7bh3SHj8/600x400/" class="img-fluid" alt="...">
-        </div>
-        <div class="col-2 px-1 py-2"></div>
-        <div class="col-2 px-1 py-2"></div>
-      </div>
-    </div>
-  </div>
+	  
+  <!--</div>-->
   <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-angle-left"></i></span>
     <span class="sr-only">Previous</span>
@@ -1069,14 +874,22 @@ Carousel next click
 	
 </div>
 <!-- #Carousel Navigation -->
+	
+
 </div> <!-- /row -->
 </div> <!-- /container -->
+			
+    <div class="home-gallerys">
+        <div class="home-gallery">
+            <ul class="gallery-slides">
+                <?php foreach ($items as $image) { ?>
+                <li class="item">
 
-// Thay ảnh khi click
-jQuery(function(){
-    jQuery('#carousel-thumbs img').click(function(){
-        var thumbImage = jQuery(this).attr('src');
-		var oldSrc =  jQuery('img#toggleImage').attr("src");
-        jQuery('img[src="' + oldSrc + '"]').attr('src', thumbImage);
-    });
-});
+                        <img src="<?php echo $image['url'];?>" alt="<?php $img['title'] ?>">
+
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+
+    </div>
